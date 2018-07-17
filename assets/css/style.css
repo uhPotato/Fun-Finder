@@ -1,0 +1,180 @@
+body {
+	font-family: "Open Sans";
+	font-size: 28px;
+	text-align: center;
+}
+
+.header {
+	padding: 5px;
+}
+
+#sign-in, #sign-up {
+	margin: 5px;
+}
+
+#button-div {
+	margin-left: auto;
+}
+
+#logo-top-left {
+	padding: 5px;
+}
+
+#logo-row {
+	margin-top: 130px;
+}
+
+#userEntryRow {
+	margin-top: 40px;
+}
+
+#features-row {
+	background-color: white;
+	border-top-width: 20px;
+	border-style: solid;
+	border-color: white;
+	padding-bottom: auto;
+	padding-top: auto;
+	height: 43%;
+
+	position:absolute;
+	margin-bottom: 0;
+	bottom: 0;
+	width: 100%;
+}
+
+.card {
+	border-style: none;
+}
+
+.card-img-top {
+	height: 100px;
+	width: 100px;
+	margin: auto;
+}
+
+#location, #venue {
+	height: 45px;
+}
+
+#form-div {
+	margin: auto;
+	width: auto;
+}
+
+form {
+	justify-content: center;
+}
+
+
+footer {
+	position:absolute;
+	bottom:0;
+	width: 100%;
+	color: black;
+}
+
+h1 {
+	color: rgb(32, 4, 63);
+	font-size: 50px;
+	display: inline;
+}
+
+h2 {
+	color: rgb(32, 4, 63);
+	font-size: 30px;
+	display: inline;
+}
+
+
+h3 {
+	font-size: 24px;
+}
+
+p {
+	font-size: 14px;
+}
+
+input, select, button {
+	font-size: 20px;
+	margin: 5px;
+}
+
+video {
+	position:fixed;
+	left:0;
+	top:-80px;
+	width:100vw;
+	z-index: -1000;
+	overflow: hidden;
+}
+
+
+#todo-item {
+	font-size: 20px;
+}
+
+table {
+	font-size: 20px;
+}
+
+#titleDiv, label {
+	text-shadow: 4px 4px 4px #aaa;
+}
+
+#myModalLabel {
+	font-size: 30px !important;
+	text-shadow: 4px 4px 4px #aaa;
+}
+
+#map {
+	height: 430px;
+	margin: 20px;
+}
+
+.myShowImage {
+	margin-bottom: 20px;
+}
+
+#modalRow1 {
+	margin-bottom: 10px;
+}
+
+#largerPOIimage {
+	height: 400px;
+}
+
+#wuLogo {
+	width: 150px;
+}
+
+#logoImage {
+	width: 50%;
+	margin-left: 30%;
+	margin-top: 20%;
+}
+
+#logoImageDiv {
+	margin-top: 12%;
+	margin-bottom: 10px;
+}
+
+#image1, #image2, #image3, #image4, #image5, #image6 {
+	display: inline;
+}
+
+#mapRow {
+    margin-top: 10px;
+	background-color: black;
+	width: auto;
+}
+
+#reloadButtonDiv {
+	margin: auto;
+	
+}
+
+#photosDiv {
+	margin-top: 10px;
+	
+}
