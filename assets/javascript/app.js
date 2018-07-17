@@ -404,19 +404,19 @@ $("#add-to-do").on("click", function (event) {
 
 //To-do List
    //  On Click event associated with the add-to-do function
-   $("#add-to-do").click(function(event) {
-     event.preventDefault();
+//    $("#add-to-do").click(function(event) {
+//      event.preventDefault();
 
-     // Get the to-do "value" from the textbox and store it a variable
-     var toDoTask = $("#to-do").val().trim();
-     var toDoObject = {
-       to_do: toDoTask
-     }
-     database.ref().push(toDoObject);
+//      // Get the to-do "value" from the textbox and store it a variable
+//      var toDoTask = $("#to-do").val().trim();
+//      var toDoObject = {
+//        to_do: toDoTask
+//      }
+//      database.ref().push(toDoObject);
 
-     generateExistingToDo(toDoTask);
+//      generateExistingToDo(toDoTask);
 
-   });
+//    });
 
    // When a user clicks a check box then delete the specific content
    // (NOTE: Pay attention to the unusual syntax here for the click event.
@@ -437,12 +437,15 @@ $("#add-to-do").on("click", function (event) {
    var initialLoad = true;
    var db_data = database.ref();
    function listToDo(){
+       console.log("THIS IS HAPPENING!!");
        db_data.on("value", function(res){
            valueObject = res.val();
            console.log(valueObject);
            if(initialLoad){
                for(var i in valueObject){
+                   if (valueObject[i].to_do !== undefined){
                    generateExistingToDo(valueObject[i].to_do);
+                   }
                }
                initialLoad=false;
            }
@@ -457,7 +460,7 @@ $("#add-to-do").on("click", function (event) {
    var toDoCount = 0;
    function generateExistingToDo(input){
             //Specific person User name via UserID
-            
+
            var toDoItem = $("<p>");
            toDoItem.attr("id", "item-" + toDoCount);
            toDoItem.append(" " + input);
@@ -484,7 +487,8 @@ $("#add-to-do").on("click", function (event) {
                if(v == toDoIndex){
                    db_data.child(i).remove();
                  
-                       location.reload();
+                    //   location.reload();
+
                    return false;
                }
 

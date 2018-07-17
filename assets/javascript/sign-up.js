@@ -3,16 +3,18 @@ $(document).ready(function(){
   $("#modal-window").hide();
 
   // Initialize Firebase
-  var config = {
-    apiKey: "AIzaSyAHKzVuDz5Fzb_siJvcEC0tYakcxc9dyhY",
-    authDomain: "things-to-do-744e7.firebaseapp.com",
-    databaseURL: "https://things-to-do-744e7.firebaseio.com",
-    projectId: "things-to-do-744e7",
-    storageBucket: "things-to-do-744e7.appspot.com",
-    messagingSenderId: "807935759914"
-  };
-  firebase.initializeApp(config);
+  if(!firebase.apps.length){
 
+    var config = {
+      apiKey: "AIzaSyAHKzVuDz5Fzb_siJvcEC0tYakcxc9dyhY",
+      authDomain: "things-to-do-744e7.firebaseapp.com",
+      databaseURL: "https://things-to-do-744e7.firebaseio.com",
+      projectId: "things-to-do-744e7",
+      storageBucket: "things-to-do-744e7.appspot.com",
+      messagingSenderId: "807935759914"
+    };
+    firebase.initializeApp(config);
+  }
   //Declaring a variable to store the database info...................
   var database = firebase.database();
   
@@ -132,7 +134,8 @@ $(document).ready(function(){
         zip : userZip,
         phone : userPhone,
         email : userEmail,
-        dateAdded : firebase.database.ServerValue.TIMESTAMP
+        dateAdded : firebase.database.ServerValue.TIMESTAMP,
+       // to_do : []
       };
               
       //upload the user details to the database...............
