@@ -1,4 +1,18 @@
 // initMap function is called first by the Google Maps object generated in index.html
+
+var config = {
+    apiKey: "AIzaSyAHKzVuDz5Fzb_siJvcEC0tYakcxc9dyhY",
+    authDomain: "things-to-do-744e7.firebaseapp.com",
+    databaseURL: "https://things-to-do-744e7.firebaseio.com",
+    projectId: "things-to-do-744e7",
+    storageBucket: "things-to-do-744e7.appspot.com",
+    messagingSenderId: "807935759914"
+  };
+  firebase.initializeApp(config);
+
+  //Declaring a variable to store the database info...................
+  var database = firebase.database();
+
 function initMap() {
 
     // Hide the #mapRow div and the #photosDiv  and titleDiv to start
@@ -386,15 +400,95 @@ $("#add-to-do").on("click", function (event) {
     toDoCount++;
 });
 
-// When a user clicks a check box then delete the specific content
-// (NOTE: Pay attention to the unusual syntax here for the click event.
-// Because we are creating click events on "dynamic" content, we can't just use the usual "on" "click" syntax.)
-$(document.body).on("click", ".checkbox", function () {
 
-    // Get the number of the button from its data attribute and hold in a variable called  toDoNumber.
-    var toDoNumber = $(this).attr("data-to-do");
 
-    // Select and Remove the specific <p> element that previously held the to do item number.
-    $("#item-" + toDoNumber).remove();
-});
+//To-do List
+   //  On Click event associated with the add-to-do function
+   $("#add-to-do").click(function(event) {
+     event.preventDefault();
+
+     // Get the to-do "value" from the textbox and store it a variable
+     var toDoTask = $("#to-do").val().trim();
+     var toDoObject = {
+       to_do: toDoTask
+     }
+     database.ref().push(toDoObject);
+
+     generateExistingToDo(toDoTask);
+
+   });
+
+   // When a user clicks a check box then delete the specific content
+   // (NOTE: Pay attention to the unusual syntax here for the click event.
+   // Because we are creating click events on "dynamic" content, we can't just use the usual "on" "click" syntax.)
+   $(document.body).on("click", ".checkbox", function() {
+
+     // Get the number of the button from its data attribute and hold in a variable called  toDoNumber.
+       var toDoNumber = $(this).attr("data-to-do");
+       console.log($(this).attr("data-to-do"));
+       // Select and Remove the specific <p> element that previously held the to do item number.
+       $("#item-" + toDoNumber).remove();
+
+       return removeFromFirebase(toDoNumber);
+   });
+
+
+   var valueObject ={};
+   var initialLoad = true;
+   var db_data = database.ref();
+   function listToDo(){
+       db_data.on("value", function(res){
+           valueObject = res.val();
+           console.log(valueObject);
+           if(initialLoad){
+               for(var i in valueObject){
+                   generateExistingToDo(valueObject[i].to_do);
+               }
+               initialLoad=false;
+           }
+           
+       });
+   }
+
+   $(document).ready( function(){
+       return listToDo();
+   });
+   
+   var toDoCount = 0;
+   function generateExistingToDo(input){
+            //Specific person User name via UserID
+            
+           var toDoItem = $("<p>");
+           toDoItem.attr("id", "item-" + toDoCount);
+           toDoItem.append(" " + input);
+
+           var toDoClose = $("<button>");
+           toDoClose.attr("data-to-do", toDoCount);
+           toDoClose.addClass("checkbox");
+           toDoClose.append("✓");
+
+           toDoItem = toDoItem.prepend(toDoClose);
+           $("#to-dos").append(toDoItem);
+
+           $("#to-do").val("");
+           toDoCount++;
+
+
+       
+   }  
+   function removeFromFirebase(toDoIndex){
+       
+       toDoIndex = parseInt(toDoIndex);
+           Object.keys(valueObject).some(function(i,v){
+
+               if(v == toDoIndex){
+                   db_data.child(i).remove();
+                 
+                       location.reload();
+                   return false;
+               }
+
+           });
+         
+   }
 
