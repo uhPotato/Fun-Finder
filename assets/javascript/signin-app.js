@@ -17,25 +17,55 @@
  */
 
   // Initialize Firebase
-  var config = {
-    apiKey: "AIzaSyAHKzVuDz5Fzb_siJvcEC0tYakcxc9dyhY",
-    authDomain: "things-to-do-744e7.firebaseapp.com",
-    databaseURL: "https://things-to-do-744e7.firebaseio.com",
-    projectId: "things-to-do-744e7",
-    storageBucket: "things-to-do-744e7.appspot.com",
-    messagingSenderId: "807935759914"
-  };
-  firebase.initializeApp(config);
+  if(!firebase.apps.length){
+    
+    var config = {
+      apiKey: "AIzaSyAHKzVuDz5Fzb_siJvcEC0tYakcxc9dyhY",
+      authDomain: "things-to-do-744e7.firebaseapp.com",
+      databaseURL: "https://things-to-do-744e7.firebaseio.com",
+      projectId: "things-to-do-744e7",
+      storageBucket: "things-to-do-744e7.appspot.com",
+      messagingSenderId: "807935759914"
+    };
+    firebase.initializeApp(config);
+  }
+  
   
   var database = firebase.database();
 /**
  * @return {!Object} The FirebaseUI config.
 
-  
+*/  
+
+// var uiConfig = {
+//     callbacks: {
+//           signInSuccess: function (user, credential, redirectUrl) {
+//             }
+//     },
+//             credentialHelper: firebaseui.auth.CredentialHelper.ACCOUNT_CHOOSER_COM,
+//             queryParameterForSignInSuccessUrl: JS_RESOURCES.FrontUrl,
+//             signInFlow: 'popup',
+//             signInOptions: [
+//                 firebase.auth.GoogleAuthProvider.PROVIDER_ID,
+//                 firebase.auth.FacebookAuthProvider.PROVIDER_ID,
+//               //  firebase.auth.TwitterAuthProvider.PROVIDER_ID
+//             ]
+// };
+
+// var ui = new firebaseui.auth.AuthUI(firebase.auth());
+// ui.start('#firebaseui-auth-container', uiConfig);
+
+
+
      /*
 Google pop up authentication 
   */
   
+
+
+ //Utilizing the Firebase Google Provider Authentication to gain access to Google Login
+ //Documentation found at https://firebase.google.com/docs/auth/web/google-signin
+ // This function sets up Auth and calls userLogin Function to retrieve token 
 function googleLogin() {
  
  var googleProvider = new firebase.auth.GoogleAuthProvider();
@@ -47,6 +77,10 @@ function googleLogin() {
 //  console.log(provider);
 //  firebase.auth().signInWithRedirect(provider);
 }
+
+//Utilizing the Firebase Facebook Provider Authentication to gain access to Facebook Login
+ //Documentation found at https://firebase.google.com/docs/auth/web/facebook-login
+ // This function sets up Auth and calls userLogin Function to retrieve token 
 function facebookLogin() {
     var facebookProvider = new firebase.auth.FacebookAuthProvider();
     console.log("GOT HERE");
@@ -54,6 +88,9 @@ function facebookLogin() {
 
 }
 
+
+//Signs user in via popup window
+//Requires pop-up to be enabled by browser
 function userLogin(provider) {
 
  firebase.auth().signInWithPopup(provider).then(function(result) {
