@@ -99,6 +99,8 @@ function userLogin(provider) {
     // The signed-in user info.
     var user = result.user;
     console.log(token);
+    console.log(user);
+    $(location).attr('href', 'index.html');
     // ...
   }).catch(function(error) {
     // Handle Errors here.

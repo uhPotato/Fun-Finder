@@ -135,7 +135,7 @@ $(document).ready(function(){
         phone : userPhone,
         email : userEmail,
         dateAdded : firebase.database.ServerValue.TIMESTAMP,
-       // to_do : []
+     //   to_do : to_do[]
       };
               
       //upload the user details to the database...............

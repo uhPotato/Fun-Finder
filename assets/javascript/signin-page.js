@@ -109,45 +109,57 @@ $(document).ready(function(){
 
 });
 
-  
-function googleLogin() {
+ //Utilizing the Firebase Google Provider Authentication to gain access to Google Login
+ //Documentation found at https://firebase.google.com/docs/auth/web/google-signin
+ // This function sets up Auth and calls userLogin Function to retrieve token 
+
+// function googleLogin() {
  
-  var googleProvider = new firebase.auth.GoogleAuthProvider();
-  googleProvider.addScope('https://www.googleapis.com/auth/contacts.readonly');
+//   var googleProvider = new firebase.auth.GoogleAuthProvider();
+//   googleProvider.addScope('https://www.googleapis.com/auth/contacts.readonly');
  
-  userLogin(googleProvider);
+//   userLogin(googleProvider);
  
- //  console.log("Are you hitting it?");
- //  console.log(provider);
- //  firebase.auth().signInWithRedirect(provider);
- }
- function facebookLogin() {
-     var facebookProvider = new firebase.auth.FacebookAuthProvider();
-     console.log("GOT HERE");
-     userLogin(facebookProvider);
+//  //  console.log("Are you hitting it?");
+//  //  console.log(provider);
+//  //  firebase.auth().signInWithRedirect(provider);
+//  }
+
+//  //Utilizing the Firebase Facebook Provider Authentication to gain access to Facebook Login
+//  //Documentation found at https://firebase.google.com/docs/auth/web/facebook-login
+//  // This function sets up Auth and calls userLogin Function to retrieve token 
+//  function facebookLogin() {
+//      var facebookProvider = new firebase.auth.FacebookAuthProvider();
+//      console.log("GOT HERE");
+//      userLogin(facebookProvider);
  
- }
+//  }
+
+// //Signs user in via popup window
+// //Requires pop-up to be enabled by browser
+//  function userLogin(provider) {
  
- function userLogin(provider) {
- 
-  firebase.auth().signInWithPopup(provider).then(function(result) {
-     // This gives you a Google Access Token. You can use it to access the Google API.
-     var token = result.credential.accessToken;
-     // The signed-in user info.
-     var user = result.user;
-     console.log(token);
-     // ...
-   }).catch(function(error) {
-     // Handle Errors here.
-     var errorCode = error.code;
-     var errorMessage = error.message;
-     // The email of the user's account used.
-     var email = error.email;
-     // The firebase.auth.AuthCredential type that was used.
-     var credential = error.credential;
-     // ...
-   });
- }
+//   firebase.auth().signInWithPopup(provider).then(function(result) {
+//      // This gives you a Google Access Token. You can use it to access the Google API.
+//      var token = result.credential.accessToken;
+//      // The signed-in user info.
+//      var user = result.user;
+//      console.log(token);
+//      console.log(user);
+// //     window.locate.assign("index.html");
+//      // ...
+//    }).catch(function(error) {
+//      // Handle Errors here.
+//      var errorCode = error.code;
+//      var errorMessage = error.message;
+//      // The email of the user's account used.
+//      var email = error.email;
+//      // The firebase.auth.AuthCredential type that was used.
+//      var credential = error.credential;
+//      // ...
+//    });
+   
+//  }
 
 
  
