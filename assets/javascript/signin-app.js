@@ -17,18 +17,15 @@
  */
 
   // Initialize Firebase
-  if(!firebase.apps.length){
-
-    var config = {
-      apiKey: "AIzaSyAHKzVuDz5Fzb_siJvcEC0tYakcxc9dyhY",
-      authDomain: "things-to-do-744e7.firebaseapp.com",
-      databaseURL: "https://things-to-do-744e7.firebaseio.com",
-      projectId: "things-to-do-744e7",
-      storageBucket: "things-to-do-744e7.appspot.com",
-      messagingSenderId: "807935759914"
-    };
-    firebase.initializeApp(config);
-  }
+  var config = {
+    apiKey: "AIzaSyAHKzVuDz5Fzb_siJvcEC0tYakcxc9dyhY",
+    authDomain: "things-to-do-744e7.firebaseapp.com",
+    databaseURL: "https://things-to-do-744e7.firebaseio.com",
+    projectId: "things-to-do-744e7",
+    storageBucket: "things-to-do-744e7.appspot.com",
+    messagingSenderId: "807935759914"
+  };
+  firebase.initializeApp(config);
   
   var database = firebase.database();
 /**
@@ -45,6 +42,7 @@ function googleLogin() {
  googleProvider.addScope('https://www.googleapis.com/auth/contacts.readonly');
 
  userLogin(googleProvider);
+
 //  console.log("Are you hitting it?");
 //  console.log(provider);
 //  firebase.auth().signInWithRedirect(provider);
