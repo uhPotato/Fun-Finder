@@ -1,17 +1,20 @@
 // initMap function is called first by the Google Maps object generated in index.html
 
 var config = {
-    apiKey: "AIzaSyAHKzVuDz5Fzb_siJvcEC0tYakcxc9dyhY",
-    authDomain: "things-to-do-744e7.firebaseapp.com",
-    databaseURL: "https://things-to-do-744e7.firebaseio.com",
-    projectId: "things-to-do-744e7",
-    storageBucket: "things-to-do-744e7.appspot.com",
-    messagingSenderId: "807935759914"
+    apiKey: "AIzaSyDEgMfb2aB9QdQvRLSuxy-VeLMgK2krJpc",
+    authDomain: "fun-finder-837af.firebaseapp.com",
+    databaseURL: "https://fun-finder-837af.firebaseio.com",
+    projectId: "fun-finder-837af",
+    storageBucket: "fun-finder-837af.appspot.com",
+    messagingSenderId: "904384182866"
   };
   firebase.initializeApp(config);
 
+
+  
   //Declaring a variable to store the database info...................
   var database = firebase.database();
+//  var to_Do = [];
 
 function initMap() {
 
@@ -356,6 +359,7 @@ function getImages(somePlace) {
 }
 
 //To-do List
+//To-do List
 var toDoCount = 0;
 
 //  On Click event associated with the add-to-do function
@@ -495,4 +499,3 @@ $("#add-to-do").on("click", function (event) {
            });
          
    }
-

@@ -4,15 +4,15 @@ $(document).ready(function(){
   if(!firebase.apps.length){
     
 
-  var config = {
-    apiKey: "AIzaSyAHKzVuDz5Fzb_siJvcEC0tYakcxc9dyhY",
-    authDomain: "things-to-do-744e7.firebaseapp.com",
-    databaseURL: "https://things-to-do-744e7.firebaseio.com",
-    projectId: "things-to-do-744e7",
-    storageBucket: "things-to-do-744e7.appspot.com",
-    messagingSenderId: "807935759914"
-  };
-  firebase.initializeApp(config);
+    var config = {
+      apiKey: "AIzaSyDEgMfb2aB9QdQvRLSuxy-VeLMgK2krJpc",
+      authDomain: "fun-finder-837af.firebaseapp.com",
+      databaseURL: "https://fun-finder-837af.firebaseio.com",
+      projectId: "fun-finder-837af",
+      storageBucket: "fun-finder-837af.appspot.com",
+      messagingSenderId: "904384182866"
+    };
+    firebase.initializeApp(config);
 }
 
   //Declaring a variable to store the database info...................
